@@ -29,6 +29,7 @@ namespace UI
         [SerializeField] private Button purchaseButton;
         
         private Dictionary<int, GameObject> _mInstantiatedItems = new Dictionary<int, GameObject>();
+        private IItemData _mCurrentSelectedItem;
 
         private void Awake()
         {
@@ -86,7 +87,6 @@ namespace UI
             }
         }
 
-        private IItemData _mCurrentSelectedItem;
         public void SelectItem(IItemData itemData, Sprite imageSprite)
         {
             mItemPreview.sprite = imageSprite;
@@ -116,12 +116,29 @@ namespace UI
                 return;
             }
 
-            var playerCurrency = PlayerCoreManager.Instance.PlayerData.Currency;
-            if (playerCurrency < availableItem.Item.BuyPrice)
+            var playerData = PlayerCoreManager.Instance.PlayerData;
+            if (playerData.Currency < availableItem.Item.BuyPrice)
             {
                 Debug.Log("YOU are too poor. Sorry");
                 //Launch not enough money dialogue? 
+                return;
             }
+
+            if (playerData.PlayerInventory.InventoryItems.Any(x => x.CodeId == _mCurrentSelectedItem.CodeId))
+            {
+                Debug.Log("YOU already have this item. Leave some for the rest");
+                return;
+            }
+            PurchaseItem(availableItem);
+        }
+
+        private void PurchaseItem(IShopItem availableItem)
+        {
+            _mCurrentShop.ReduceItemInStore(availableItem, 1);
+            PlayerCoreManager.Instance.PlayerData.ReduceCurrency(availableItem.Item.BuyPrice);
+            PlayerCoreManager.Instance.PlayerData.PlayerInventory.AddItemToInventory(availableItem.Item);
+            UIManager.Instance.UpdateBaseUI();
+            UpdateCurrency();
         }
     }
 }

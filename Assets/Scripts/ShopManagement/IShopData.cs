@@ -6,5 +6,6 @@ namespace ShopManagement
     {
         public string NpcName { get; }
         public List<IShopItem> AvailableItems { get; }
+        public void ReduceItemInStore(IShopItem shoppedItem, int quantity);
     }
 }

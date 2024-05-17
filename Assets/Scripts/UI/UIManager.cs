@@ -9,7 +9,9 @@ namespace UI
         public static IUIManager Instance => _mInstance;
 
         [SerializeField] private ShopUIManagement mShopManager;
+        [SerializeField] private BaseInfoCanvas mInfoCanvas;
         public IShopUIManagement ShopUIManager => mShopManager;
+        public IBaseInfoCanvas InfoCanvas => mInfoCanvas;
         
         private void Awake()
         {
@@ -37,11 +39,17 @@ namespace UI
         {
             ShopUIManager.ToggleUI(isActive);
         }
+
+        public void UpdateBaseUI()
+        {
+            mInfoCanvas.UpdateMoneyText();
+        }
     }
 
     public interface IUIManager
     {
         public void SetCurrentShop(IShopData shopData);
         public void ToggleShopUI(bool isActive);
+        void UpdateBaseUI();
     }
 }

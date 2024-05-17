@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ShopManagement;
 using TMPro;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 namespace UI
@@ -10,54 +11,56 @@ namespace UI
     {
         private IShopData _mCurrentShop;
 
-        [SerializeField] private GameObject _mAvailableItemPrefab;
+        [SerializeField] private GameObject mAvailableItemPrefab;
     
         [Header("Player")]
-        [SerializeField] private Image _mItemPreview;
-        [SerializeField] private TMP_Text _mPlayerCurrency;
+        [SerializeField] private Image mItemPreview;
+        [SerializeField] private TMP_Text mPlayerCurrency;
 
         [Header("Shop Items")]
-        [SerializeField] private Transform _mAvailableItemsHolder;
-        [SerializeField] private TMP_Text _mItemDescription;
+        [SerializeField] private Transform mAvailableItemsHolder;
+        [SerializeField] private TMP_Text mItemDescription;
 
-        private Dictionary<int, GameObject> _mInstantiatedItems = new Dictionary<int, GameObject>();
+        [Header("Sprites")] 
+        [SerializeField] private SpriteAtlas mSpriteAtlas;
 
-        public void SetShop(IShopData visitedShop)
+        private Dictionary<int, GameObject> mInstantiatedItems = new Dictionary<int, GameObject>();
+
+        public void SetShopData(IShopData visitedShop)
         {
             _mCurrentShop = visitedShop;
             StartUpdateShopUI();
         }
-    
-        private void StartUpdateShopUI()
-        {
-            ClearInstantiatedObjects();
-        }
-
-        /// <summary>
-        /// Would use an Object pool for this but just a fast prototype
-        /// </summary>
-        private void ClearInstantiatedObjects()
-        {
-            foreach (var instantiatedItem in _mInstantiatedItems)
-            {
-                Destroy(instantiatedItem.Value);
-            }
-            _mInstantiatedItems.Clear();
-        }
-
-        private void ClearObjects()
-        {
-            //New Comment      
-        }
-
         public void ToggleUI(bool isActive)
         {
             gameObject.SetActive(isActive);
         }
-    }
+        /// <summary>
+        /// Would use an Object pool for this but just a fast prototype
+        /// </summary>
+        private void StartUpdateShopUI()
+        {
+            ClearInstantiatedObjects();
+            PopulateGameObjects();
+        }
 
-    public interface IShopUIManagement
-    {
-        public void ToggleUI(bool isActive);
+        private void ClearInstantiatedObjects()
+        {
+            foreach (var instantiatedItem in mInstantiatedItems)
+            {
+                Destroy(instantiatedItem.Value);
+            }
+            mInstantiatedItems.Clear();
+        }
+        
+        private void PopulateGameObjects()
+        {
+            foreach (var shopItem in _mCurrentShop.AvailableItems)
+            {
+                var itemOverview = Instantiate(mAvailableItemPrefab, mAvailableItemsHolder);
+                var itemController = itemOverview.GetComponent<ItemOverviewController>();
+                itemController.InitializeData(shopItem);
+            }
+        }
     }
 }

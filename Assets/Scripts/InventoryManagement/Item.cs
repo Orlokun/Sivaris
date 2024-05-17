@@ -5,6 +5,7 @@ namespace InventoryManagement
     public class ItemData : IItemData
     {
         private Guid _mId;
+        private ItemCodeId _mCodeId;
         private string _mName;
         private string _mIconPath;
         private string _mDescription;
@@ -12,14 +13,16 @@ namespace InventoryManagement
         private int _mSellPrice;
 
         public Guid Id => _mId;
+        public ItemCodeId CodeId => _mCodeId;
         public string Name => _mName;
         public string IconPath => _mIconPath;
         public string Description => _mDescription;
         public int BuyPrice => _mBuyPrice;
         public int SellPrice => _mSellPrice;
         
-        public ItemData(string mName, string mIconPath, string mDescription, int mBuyPrice, int mSellPrice)
+        public ItemData(ItemCodeId codeId, string mName, string mIconPath, string mDescription, int mBuyPrice, int mSellPrice)
         {
+            _mCodeId = codeId;
             _mId = Guid.NewGuid();
             _mName = mName;
             _mIconPath = mIconPath;
@@ -40,7 +43,7 @@ namespace InventoryManagement
         public string Description { get; }
     }
 
-    public enum ItemId
+    public enum ItemCodeId
     {
         Liliths,
         Durendal,
@@ -51,6 +54,7 @@ namespace InventoryManagement
     
     public interface IBaseData
     {
+        public ItemCodeId CodeId { get; }
         public Guid Id { get; }
         public string Name { get; }
     }

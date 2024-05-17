@@ -3,20 +3,20 @@ using UnityEngine;
 
 namespace ShopManagement
 {
-    
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Collider2D))]
     public abstract class NpcShop : MonoBehaviour
     {
-        [SerializeField] private Animator _mAnim;
-        [SerializeField] private Collider2D _mCollider;
+        protected IShopData ShopData; 
+        [SerializeField] protected Animator _mAnim;
+        [SerializeField] protected Collider2D _mCollider;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             
         }
 
-        protected void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (!IsPlayer(other))
             {

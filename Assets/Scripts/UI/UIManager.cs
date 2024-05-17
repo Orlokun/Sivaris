@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ShopManagement;
+using UnityEngine;
 
 namespace UI
 {
@@ -27,6 +28,11 @@ namespace UI
             ToggleShopUI(false);
         }
 
+        public void SetCurrentShop(IShopData shopData)
+        {
+            ShopUIManager.SetShopData(shopData);
+        }
+
         public void ToggleShopUI(bool isActive)
         {
             ShopUIManager.ToggleUI(isActive);
@@ -35,6 +41,7 @@ namespace UI
 
     public interface IUIManager
     {
+        public void SetCurrentShop(IShopData shopData);
         public void ToggleShopUI(bool isActive);
     }
 }

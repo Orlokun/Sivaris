@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.65
+  m_fontSize: 14
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.6
+  m_fontSize: 14
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 3134832360947990966}
   - component: {fileID: 5863321866853477661}
   - component: {fileID: 1728371300759450162}
+  - component: {fileID: 9145547546822082616}
   m_Layer: 5
   m_Name: ItemSaleOverview
   m_TagString: Untagged
@@ -447,7 +448,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9197433230450373393}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.000019818543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -521,3 +522,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &9145547546822082616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197433230450373393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0baa09b01f76cc145a82e6500cfd91b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mItemIcon: {fileID: 4814588075806551942}
+  mItemName: {fileID: 8309850397469855426}
+  mItemCost: {fileID: 3376361673716751564}
+  mSpriteAtlas: {fileID: 4343727234628468602, guid: 6903b7eb6b8ff5c43890e52c6dd776e6,
+    type: 2}

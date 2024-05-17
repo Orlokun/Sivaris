@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace LayerLab.SimpleCasual
+namespace Layer_Lab.GUI_Pro_SimpleCasual.Scripts
 {
     public class PanelSimpleCasual : MonoBehaviour
     {

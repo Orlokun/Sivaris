@@ -92,7 +92,7 @@ namespace PlayerManagement.Commands
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            //Not implemented
         }
     }
 }

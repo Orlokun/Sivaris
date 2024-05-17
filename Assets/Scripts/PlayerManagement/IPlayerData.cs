@@ -2,6 +2,6 @@
 {
     public interface IPlayerData
     {
-        
+        public int Currency { get; }
     }
 }

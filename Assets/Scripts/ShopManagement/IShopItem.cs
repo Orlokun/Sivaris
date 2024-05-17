@@ -1,4 +1,4 @@
-﻿using InventoryManagement;
+﻿using CatalogueManagement.Interfaces;
 
 namespace ShopManagement
 {

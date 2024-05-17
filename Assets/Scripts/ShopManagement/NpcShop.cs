@@ -25,7 +25,7 @@ namespace ShopManagement
             Debug.Log("Player Entered Shop");
         }
 
-        protected void OnTriggerExit2D(Collider2D other)
+        protected virtual void OnTriggerExit2D(Collider2D other)
         {
             if (!IsPlayer(other))
             {

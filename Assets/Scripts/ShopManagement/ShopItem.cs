@@ -1,17 +1,17 @@
-﻿using InventoryManagement;
+﻿using CatalogueManagement.Interfaces;
 
 namespace ShopManagement
 {
     public class ShopItem : IShopItem
     {
-        private IItemData _mItem;
+        private IItemData _mItemItem;
         private int _mQuantity;
 
-        public IItemData Item => _mItem;
+        public IItemData Item => _mItemItem;
         public int Quantity => _mQuantity;
-        public ShopItem(IItemData item, int quantity)
+        public ShopItem(IItemData itemItem, int quantity)
         {
-            _mItem = item;
+            _mItemItem = itemItem;
             _mQuantity = quantity;
         }
     }

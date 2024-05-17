@@ -6,7 +6,8 @@ namespace PlayerManagement
     {
         private static IPlayerCoreManager _mInstance;
         public static IPlayerCoreManager Instance => _mInstance;
-        
+
+        public IPlayerData PlayerData => _mPlayerData;
         private IPlayerData _mPlayerData;
         [SerializeField] private SpriteRenderer currentSword;
 
@@ -22,10 +23,14 @@ namespace PlayerManagement
             {
                 Destroy(this);
             }
+            
+            _mPlayerData = new PlayerData();
+            _mMovementController = FindFirstObjectByType<CharacterMovementController>();
         }
     }
 
     public interface IPlayerCoreManager
     {
+        public IPlayerData PlayerData { get; }
     }
 }

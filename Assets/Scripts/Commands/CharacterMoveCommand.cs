@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using PlayerManagement;
+using UnityEngine;
 
-namespace PlayerManagement.Commands
+namespace Commands
 {
     public class CharacterMoveCommand : IMoveCommand
     {
@@ -13,7 +14,7 @@ namespace PlayerManagement.Commands
         }
         
         //Resolve Movement Animation
-        public void Execute(Vector2 direction, IAnimatedObject animatedObject, Transform transform)
+        public void Execute(Vector2 direction, IAnimatedObject animatedObject)
         {
             if (!HasStatusChange(direction))
             {

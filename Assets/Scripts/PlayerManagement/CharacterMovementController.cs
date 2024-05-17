@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using PlayerManagement.Commands;
+using Commands;
 using UnityEngine;
 
 namespace PlayerManagement
@@ -9,11 +8,10 @@ namespace PlayerManagement
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class TopDownCharacterController : MonoBehaviour
+    public class CharacterMovementController : MonoBehaviour
     {
-        #region InMemData
-
-        private static Dictionary<BaseMovementAnimations, string> BasePlayerAnim => new()
+        #region InMemAnimationData
+        public static Dictionary<BaseMovementAnimations, string> BasePlayerAnim => new()
         {
             { BaseMovementAnimations.IdleUp , "Idle_Up"},
             { BaseMovementAnimations.IdleDown , "Idle_Down"},
@@ -39,24 +37,29 @@ namespace PlayerManagement
         private IAnimatedObject _mAnimatorData;
         private void Awake()
         {
-            ConfirmRequiredComponents();
+            if (!ConfirmRequiredComponents())
+            {
+                return;
+            }
             _mMoveCommand = new CharacterMoveCommand();
             _mAnimatorData = new AnimatedObject(_mAnimator, BasePlayerAnim);
         }
 
-        private void ConfirmRequiredComponents()
+        private bool ConfirmRequiredComponents()
         {
             _mSpriteRenderer = GetComponent<SpriteRenderer>();
             _mRigidbody = GetComponent<Rigidbody2D>();
             _mAnimator = GetComponent<Animator>();
             _mCollider = GetComponent<CapsuleCollider2D>();
+            return _mSpriteRenderer != null && _mRigidbody != null && _mRigidbody && _mAnimator != null && _mCollider != null;
         }
 
+        //Manage Input
         private void Update()
         {
             ManageMovementInput();
             //Manage Movement animation
-            _mMoveCommand.Execute(_mCurrentDirection, _mAnimatorData, transform);
+            _mMoveCommand.Execute(_mCurrentDirection, _mAnimatorData);
         }
         private void ManageMovementInput()
         {
@@ -66,6 +69,8 @@ namespace PlayerManagement
             _mCurrentDirection.y = Input.GetKey(KeyCode.W) ? 1 : _mCurrentDirection.y;
             _mCurrentDirection.y = Input.GetKey(KeyCode.S) ? -1 : _mCurrentDirection.y;
         }
+        
+        //Resolve RigidBody movement
         private void FixedUpdate()
         {
             ManageMovement();

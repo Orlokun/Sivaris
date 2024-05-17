@@ -1,4 +1,4 @@
-using PlayerManagement.Commands;
+using Commands;
 using UnityEngine;
 
 namespace PlayerManagement

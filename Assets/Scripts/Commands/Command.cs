@@ -1,4 +1,4 @@
-﻿namespace PlayerManagement.Commands
+﻿namespace Commands
 {
     public interface ICommand
     {

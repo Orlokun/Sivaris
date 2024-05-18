@@ -1,5 +1,6 @@
 using CatalogueManagement.Interfaces;
 using ShopManagement;
+using ShopManagement.GenericShop;
 using UnityEngine;
 
 namespace UI

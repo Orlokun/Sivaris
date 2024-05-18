@@ -2,6 +2,7 @@
 using System.Linq;
 using CatalogueManagement.Interfaces;
 using ShopManagement;
+using ShopManagement.ItemsInShop;
 
 namespace CatalogueManagement
 {

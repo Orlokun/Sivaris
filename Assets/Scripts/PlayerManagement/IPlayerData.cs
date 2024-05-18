@@ -6,6 +6,7 @@ namespace PlayerManagement
     {
         public IPlayerInventoryModule PlayerInventory { get; }
         public void ReduceCurrency(int charge);
+        public void AddCurrency(int gained);
     }
 
     public interface IPlayerMoney

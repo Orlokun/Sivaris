@@ -1,4 +1,6 @@
-﻿using ShopManagement;
+﻿using DialogueManager;
+using ShopManagement;
+using ShopManagement.GenericShop;
 using UnityEngine;
 
 namespace UI
@@ -9,8 +11,10 @@ namespace UI
         public static IUIManager Instance => _mInstance;
 
         [SerializeField] private ShopUIManagement mShopManager;
+        [SerializeField] private DialogueOperator mDialogueManager;
         [SerializeField] private BaseInfoCanvas mInfoCanvas;
         public IShopUIManagement ShopUIManager => mShopManager;
+        public IDialogueOperator DialogueManager => mDialogueManager;
         public IBaseInfoCanvas InfoCanvas => mInfoCanvas;
         
         private void Awake()
@@ -40,6 +44,11 @@ namespace UI
             ShopUIManager.ToggleUI(isActive);
         }
 
+        public void ToggleDialogueUI(bool isActive)
+        {
+            DialogueManager.ToggleUI(isActive);
+        }
+
         public void UpdateBaseUI()
         {
             mInfoCanvas.UpdateMoneyText();
@@ -51,5 +60,8 @@ namespace UI
         public void SetCurrentShop(IShopData shopData);
         public void ToggleShopUI(bool isActive);
         void UpdateBaseUI();
+        public void ToggleDialogueUI(bool isActive);
+
+        public IDialogueOperator DialogueManager { get; }
     }
 }

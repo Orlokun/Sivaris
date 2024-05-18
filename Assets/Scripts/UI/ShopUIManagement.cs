@@ -3,6 +3,8 @@ using System.Linq;
 using CatalogueManagement.Interfaces;
 using PlayerManagement;
 using ShopManagement;
+using ShopManagement.GenericShop;
+using ShopManagement.ItemsInShop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

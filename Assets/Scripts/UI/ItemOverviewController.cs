@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ShopManagement;
+using ShopManagement.ItemsInShop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;

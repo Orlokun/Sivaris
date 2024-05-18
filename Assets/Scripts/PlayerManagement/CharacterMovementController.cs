@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Commands;
+using PlayerManagement.Animation;
 using UnityEngine;
 
 namespace PlayerManagement
@@ -60,7 +61,26 @@ namespace PlayerManagement
             ManageMovementInput();
             //Manage Movement animation
             _mMoveCommand.Execute(_mCurrentDirection, _mAnimatorData);
+
+            CheckCheatInput();
         }
+
+        private int _mCheatRate = 150;
+        private int _mCurrentCheatRate = 0;
+        private void CheckCheatInput()
+        {
+            var currentPlayerMoney = PlayerCoreManager.Instance.PlayerData.Currency;
+            if (Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.K) && currentPlayerMoney < 50)
+            {
+                _mCurrentCheatRate++;
+                if (_mCurrentCheatRate >= _mCheatRate)
+                {
+                    PlayerCoreManager.Instance.PlayerData.AddCurrency(5);
+                    _mCurrentCheatRate = 0;
+                }
+            }
+        }
+
         private void ManageMovementInput()
         {
             _mCurrentDirection = Vector2.zero;

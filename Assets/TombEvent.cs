@@ -20,7 +20,7 @@ public class TombEvent : MonoBehaviour
             return;
         }
         StartCoroutine(WaitForFeedback());
-        PlayerCoreManager.Instance.PlayerSwitchTombState(true, TombId);
+        PlayerCoreManager.Instance.PlayerSwitchAvailableEventState(true, TombId);
     }
 
     private IEnumerator WaitForFeedback()
@@ -34,7 +34,7 @@ public class TombEvent : MonoBehaviour
         {
             return;
         }
-        PlayerCoreManager.Instance.PlayerSwitchTombState(false, 0);
+        PlayerCoreManager.Instance.PlayerSwitchAvailableEventState(false, 0);
         FbButton.SetActive(false);
     }
 

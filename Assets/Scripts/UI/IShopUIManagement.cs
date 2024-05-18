@@ -9,6 +9,7 @@ namespace UI
     {
         public void ToggleUI(bool isActive);
         public void SetShopData(IShopData visitedShop, NpcShop shopOwner);
+        public void UpdateShopUI();
     }
 
     public interface IItemSelectable

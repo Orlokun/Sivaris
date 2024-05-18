@@ -13,6 +13,7 @@ namespace PlayerManagement
         public void ReduceCurrency(int charge)
         {
             _mCurrency -= charge;
+            _mCurrency = _mCurrency < 0 ? 0 : _mCurrency;
             UIManager.Instance.UpdateBaseUI();
         }
         public void AddCurrency(int gained)

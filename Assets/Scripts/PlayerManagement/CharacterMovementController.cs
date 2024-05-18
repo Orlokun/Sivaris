@@ -59,9 +59,10 @@ namespace PlayerManagement
         private void Update()
         {
             ManageMovementInput();
-            //Manage Movement animation
+            //Execute Movement animation
             _mMoveCommand.Execute(_mCurrentDirection, _mAnimatorData);
 
+            //Cheat input for player to gather money easily
             CheckCheatInput();
         }
 

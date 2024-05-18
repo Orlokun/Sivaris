@@ -7,21 +7,21 @@ namespace ShopManagement
     {
         #region Welcome Dialogues
         //Welcome Dialogue 1
-        private const string Welcome_1_Node0 = "It's a long time someone came through the graveyard of the old forgotten heroes";
-        private const string Welcome_1_Node1 = "This may look abandoned. But Gold is still needed around this parts";
+        private const string Welcome_1_Node0 = "It's a long time someone came...";
+        private const string Welcome_1_Node1 = "This may look abandoned. But Gold is still needed around this parts.";
         private const string Welcome_1_Node2 = "*sighs with capitalism";
         
         //Welcome Dialogue 2
-        private const string Welcome_2_Node0 = "It's a long time someone came through the graveyard of the old forgotten heroes";
-        private const string Welcome_2_Node1 = "This may look abandoned. But Gold is still needed around this parts";
+        private const string Welcome_2_Node0 = "It's a long time someone came through the graveyard of the old forgotten heroes.";
+        private const string Welcome_2_Node1 = "This may look abandoned. But Gold is still needed around this parts.";
         private const string Welcome_2_Node2 = "*sighs with capitalism. Ok. Choose your sword.";
         #endregion
 
         #region Rejection Dialogues
         //Rejection Dialogue 1        
         private const string Rejection_1_Node0 = "You think you are the first broke hero around this parts?";
-        private const string Rejection_1_Node1 = "Gold is what you need to get this magic. Maybe near these tombs you may find some.";
-        private const string Rejection_1_Node2 = "If you want a fine piece of blade, bring me at least 20 coins";
+        private const string Rejection_1_Node1 = "Gold is what you need to get the ancient swords. Maybe near these tombs you may find some.";
+        private const string Rejection_1_Node2 = "If you want a fine piece of blade, bring me at least 20 coins.";
         
         //Rejection Dialogue 1        
         private const string Rejection_2_Node0 = "This lands are expensive. You should already know that. Gold is what you need if you are looking to survive. ";
@@ -33,11 +33,11 @@ namespace ShopManagement
         #region NotEnoughMoneyDialogues
         //Not enough 1
         private const string NotEnoughDough_1_Node0 = "You don't have enough gold to purchase this item.";
-        private const string NotEnoughDough_1_Node1 = "Maybe try somethin cheaper. Though what's cheap costs heavily. *bug in production happens";
+        private const string NotEnoughDough_1_Node1 = "Maybe try somethin cheaper. Though what's cheap costs heavily. *bug in production happens.";
         
         //Not Enough 2
         private const string NotEnoughDough_2_Node0 = "This lands are more expensive than what you have.";
-        private const string NotEnoughDough_2_Node1 = "*Drops rent cost as if by accident ($745)";
+        private const string NotEnoughDough_2_Node1 = "*Drops rent cost as if by accident ($950).";
         #endregion
         
         #region Already Have that

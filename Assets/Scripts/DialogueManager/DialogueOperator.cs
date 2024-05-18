@@ -41,7 +41,6 @@ namespace DialogueManager
         
         public void StartNewDialogue(IDialogue newDialogue)
         {
-            
             _currentState = UIDialogueState.TypingText;
             Debug.Log("Starting new Dialogue");
             SetIncomingDialogue(newDialogue);
@@ -177,6 +176,7 @@ namespace DialogueManager
         Tomb2,
         Tomb3,
         Tomb4,
+        Chest1
     }
     
     public class DialogueNode : IDialogueNode

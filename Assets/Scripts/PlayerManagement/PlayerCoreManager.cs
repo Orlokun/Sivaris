@@ -14,6 +14,7 @@ namespace PlayerManagement
             { FindEventId.Tomb2, false },
             { FindEventId.Tomb3, false },
             { FindEventId.Tomb4, false },
+            { FindEventId.Chest1, false}
         };
 
         private static IPlayerCoreManager _mInstance;
@@ -57,7 +58,7 @@ namespace PlayerManagement
         
         private bool _mIsEventActive = false;
         private FindEventId _mTombEventAvailable;
-        public void PlayerSwitchTombState(bool isEventActive, FindEventId tombEventId)
+        public void PlayerSwitchAvailableEventState(bool isEventActive, FindEventId tombEventId)
         {
             _mIsEventActive = isEventActive;
             _mTombEventAvailable = tombEventId;
@@ -87,11 +88,12 @@ namespace PlayerManagement
             UIManager.Instance.DialogueManager.OnDialogueCompleted += LaunchEvent;
         }
 
+        //Simple Hardcoded event. 
         private void LaunchEvent()
         {
             SmallGameEvents[_mTombEventAvailable] = true;
             _mPlayerData.AddCurrency(5);
-            PlayerSwitchTombState(false, 0);
+            PlayerSwitchAvailableEventState(false, 0);
             UIManager.Instance.DialogueManager.OnDialogueCompleted -= LaunchEvent;
         }
     }
@@ -102,6 +104,6 @@ namespace PlayerManagement
         public IPlayerData PlayerData { get; }
         public void AddItem(IItemData newItem);
 
-        public void PlayerSwitchTombState(bool isEventActive, FindEventId tombEventId);
+        public void PlayerSwitchAvailableEventState(bool isEventActive, FindEventId tombEventId);
     }
 }

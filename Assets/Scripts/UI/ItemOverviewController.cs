@@ -16,6 +16,8 @@ namespace UI
         [SerializeField] private TMP_Text mItemName;
         [SerializeField] private TMP_Text mItemCost;
         [SerializeField] private Button mChooseItem;
+
+        [SerializeField] private TMP_Text mQuantity;
         //Should be in a generalized place. But no time :D
         [SerializeField] private SpriteAtlas mSpriteAtlas;
 
@@ -40,6 +42,7 @@ namespace UI
             _mItemShopData = itemData;
             mItemName.text = _mItemShopData.Item.Name;
             mItemCost.text = _mItemShopData.Item.BuyPrice.ToString();
+            mQuantity.text = "x" + _mItemShopData.Quantity;
             LoadSpriteToImage(mItemIcon, _mItemShopData.Item.IconPath);
         }
 

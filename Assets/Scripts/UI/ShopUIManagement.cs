@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CatalogueManagement.Interfaces;
-using DialogueManager;
 using PlayerManagement;
 using ShopManagement.GenericShop;
 using ShopManagement.ItemsInShop;
@@ -48,6 +47,15 @@ namespace UI
         {
             _mCurrentShop = visitedShop;
             _mCurrentShopNpc = shopOwner;
+            StartUpdateShopUI();
+        }
+
+        public void UpdateShopUI()
+        {
+            if (_mCurrentShop == null || _mCurrentShopNpc == null)
+            {
+                return;
+            }
             StartUpdateShopUI();
         }
 
@@ -121,8 +129,7 @@ namespace UI
             var availableItem = _mCurrentShop.AvailableItems.Single(x => x.Item.CodeId == _mCurrentSelectedItem.CodeId);
             if (availableItem.Quantity <= 0)
             {
-                LaunchFeedback(FeedbackType.NoMoreAvailable);
-
+                LaunchFeedback(FeedbackType.AlreadyHave);
                 Debug.Log("Item is no longer available. SOLD");
                 //Launch no more available dialogue.
                 return;
@@ -159,6 +166,7 @@ namespace UI
             PlayerCoreManager.Instance.PlayerData.PlayerInventory.AddItemToInventory(_mLastPurchasedItem.Item);
             UIManager.Instance.UpdateBaseUI();
             UpdateCurrency();
+            StartUpdateShopUI();
             var itemSprite = mSpriteAtlas.GetSprite(_mLastPurchasedItem.Item.IconPath);
             PlayerCoreManager.Instance.SetNewSword(itemSprite);
             UIManager.Instance.DialogueManager.OnDialogueCompleted -= PurchaseItem;

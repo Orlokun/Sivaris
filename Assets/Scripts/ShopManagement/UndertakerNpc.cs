@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CatalogueManagement;
+using DialogueManager;
 using PlayerManagement;
 using ShopManagement.GenericShop;
 using UI;
@@ -52,9 +53,44 @@ namespace ShopManagement
 
         private void OpenShop()
         {
-            UIManager.Instance.SetCurrentShop(ShopData);
+            UIManager.Instance.SetCurrentShop(ShopData, this);
             UIManager.Instance.ToggleShopUI(true);
             UIManager.Instance.DialogueManager.OnDialogueCompleted -= OpenShop;
+        }
+
+        public override void LaunchFeedback(FeedbackType fbType)
+        {
+            Random.InitState(DateTime.Now.Millisecond);
+            IDialogue randomDialogue;
+            switch (fbType)
+            {
+                case FeedbackType.YouAreBroke:
+                    var randomIndex = Random.Range(0, UndertakerInMemDialogues.NotEnoughMoneyDialogues.Count);
+                    randomDialogue = UndertakerInMemDialogues.NotEnoughMoneyDialogues[randomIndex];
+                    StartDialogue(randomDialogue);
+                    break;
+                case FeedbackType.AlreadyHave:
+                    randomIndex = Random.Range(0, UndertakerInMemDialogues.AlreadyHaveItemDialogues.Count);
+                    randomDialogue = UndertakerInMemDialogues.AlreadyHaveItemDialogues[randomIndex];
+                    StartDialogue(randomDialogue);
+                    break;
+                case FeedbackType.NeedToChooseOne:
+                    randomIndex = Random.Range(0, UndertakerInMemDialogues.ChooseAnItemDialogues.Count);
+                    randomDialogue = UndertakerInMemDialogues.ChooseAnItemDialogues[randomIndex];
+                    StartDialogue(randomDialogue);
+                    break;
+                case FeedbackType.FinishPurchase:
+                    randomIndex = Random.Range(0, UndertakerInMemDialogues.FinishPurchaseDialogue.Count);
+                    randomDialogue = UndertakerInMemDialogues.FinishPurchaseDialogue[randomIndex];
+                    StartDialogue(randomDialogue);
+                    break;
+            }
+        }
+
+        private void StartDialogue(IDialogue randomDialogue)
+        {
+            UIManager.Instance.DialogueManager.ToggleUI(true);
+            UIManager.Instance.DialogueManager.StartNewDialogue(randomDialogue);
         }
     }
 }

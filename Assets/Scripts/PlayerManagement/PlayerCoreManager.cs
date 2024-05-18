@@ -18,6 +18,8 @@ namespace PlayerManagement
         private static IPlayerCoreManager _mInstance;
         public static IPlayerCoreManager Instance => _mInstance;
 
+
+
         public IPlayerData PlayerData => _mPlayerData;
 
 
@@ -45,7 +47,13 @@ namespace PlayerManagement
         {
             _mPlayerData.PlayerInventory.AddItemToInventory(newItem);
         }
-
+        public void SetNewSword(Sprite newSword)
+        {
+            currentSword.sprite = newSword;
+            currentSword.color = Color.white;
+        }
+        
+        
         private bool _mIsEventActive = false;
         private FindEventId _mTombEventAvailable;
         public void TombEventToggle(bool isEventActive, FindEventId tombEventId)
@@ -80,6 +88,7 @@ namespace PlayerManagement
 
     public interface IPlayerCoreManager
     {
+        public void SetNewSword(Sprite newSword);
         public IPlayerData PlayerData { get; }
         public void AddItem(IItemData newItem);
 

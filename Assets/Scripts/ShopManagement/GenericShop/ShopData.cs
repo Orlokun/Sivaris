@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DialogueManager;
 using ShopManagement.ItemsInShop;
+using UI;
 
 namespace ShopManagement.GenericShop
 {

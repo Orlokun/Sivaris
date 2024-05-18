@@ -32,11 +32,12 @@ namespace UI
         private void Start()
         {
             ToggleShopUI(false);
+            ToggleDialogueUI(false);
         }
 
-        public void SetCurrentShop(IShopData shopData)
+        public void SetCurrentShop(IShopData shopData, NpcShop undertakerNpc)
         {
-            ShopUIManager.SetShopData(shopData);
+            ShopUIManager.SetShopData(shopData, undertakerNpc);
         }
 
         public void ToggleShopUI(bool isActive)
@@ -57,7 +58,7 @@ namespace UI
 
     public interface IUIManager
     {
-        public void SetCurrentShop(IShopData shopData);
+        public void SetCurrentShop(IShopData shopData, NpcShop undertakerNpc);
         public void ToggleShopUI(bool isActive);
         void UpdateBaseUI();
         public void ToggleDialogueUI(bool isActive);

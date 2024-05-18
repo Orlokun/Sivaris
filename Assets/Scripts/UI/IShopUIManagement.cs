@@ -8,7 +8,7 @@ namespace UI
     public interface IShopUIManagement : IItemSelectable
     {
         public void ToggleUI(bool isActive);
-        public void SetShopData(IShopData visitedShop);
+        public void SetShopData(IShopData visitedShop, NpcShop shopOwner);
     }
 
     public interface IItemSelectable

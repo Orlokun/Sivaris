@@ -8,6 +8,7 @@ public class TombEvent : MonoBehaviour
     [SerializeField] private FindEventId TombId;
     [SerializeField] private GameObject FbButton;
 
+    private Coroutine _mFbCoroutine;
     private void Start()
     {
         FbButton.SetActive(false);
@@ -19,7 +20,7 @@ public class TombEvent : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(WaitForFeedback());
+        _mFbCoroutine = StartCoroutine(WaitForFeedback());
         PlayerCoreManager.Instance.PlayerSwitchAvailableEventState(true, TombId);
     }
 
@@ -36,6 +37,11 @@ public class TombEvent : MonoBehaviour
         }
         PlayerCoreManager.Instance.PlayerSwitchAvailableEventState(false, 0);
         FbButton.SetActive(false);
+        if (_mFbCoroutine != null)
+        {
+            StopCoroutine(_mFbCoroutine);
+            _mFbCoroutine = null;
+        }
     }
 
     private bool IsPlayer(Collider2D col)

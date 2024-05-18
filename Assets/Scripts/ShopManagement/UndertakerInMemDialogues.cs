@@ -8,12 +8,12 @@ namespace ShopManagement
         #region Welcome Dialogues
         //Welcome Dialogue 1
         private const string Welcome_1_Node0 = "It's a long time someone came...";
-        private const string Welcome_1_Node1 = "This may look abandoned. But Gold is still needed around this parts.";
+        private const string Welcome_1_Node1 = "This may look abandoned. But Gold is still needed around this parts. Plenty of gold...";
         private const string Welcome_1_Node2 = "*sighs with capitalism";
         
         //Welcome Dialogue 2
-        private const string Welcome_2_Node0 = "It's a long time someone came through the graveyard of the old forgotten heroes.";
-        private const string Welcome_2_Node1 = "This may look abandoned. But Gold is still needed around this parts.";
+        private const string Welcome_2_Node0 = "You look worthy. And I hear gold in your pockets.";
+        private const string Welcome_2_Node1 = "This may look abandoned, but Gold is still a valuable asset.";
         private const string Welcome_2_Node2 = "*sighs with capitalism. Ok. Choose your sword.";
         #endregion
 
@@ -37,7 +37,7 @@ namespace ShopManagement
         
         //Not Enough 2
         private const string NotEnoughDough_2_Node0 = "This lands are more expensive than what you have.";
-        private const string NotEnoughDough_2_Node1 = "*Drops rent cost as if by accident ($950).";
+        private const string NotEnoughDough_2_Node1 = "*Drops rent cost as if by accident ($950 + taxes).";
         #endregion
         
         #region Already Have that

@@ -27,6 +27,8 @@ namespace UI
             {
                 Destroy(this);
             }
+            ToggleShopUI(false);
+            ToggleDialogueUI(false);
         }
 
         private void Start()

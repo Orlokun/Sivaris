@@ -53,3 +53,6 @@ TagManager:
   - name: Canvas1
     uniqueID: 251477841
     locked: 0
+  - name: CanvasExit
+    uniqueID: 3337032097
+    locked: 0

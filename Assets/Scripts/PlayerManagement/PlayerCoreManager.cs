@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CatalogueManagement.Interfaces;
 using DialogueManager;
+using UI;
 using UnityEngine;
 
 namespace PlayerManagement
@@ -56,7 +57,7 @@ namespace PlayerManagement
         
         private bool _mIsEventActive = false;
         private FindEventId _mTombEventAvailable;
-        public void TombEventToggle(bool isEventActive, FindEventId tombEventId)
+        public void PlayerSwitchTombState(bool isEventActive, FindEventId tombEventId)
         {
             _mIsEventActive = isEventActive;
             _mTombEventAvailable = tombEventId;
@@ -69,20 +70,29 @@ namespace PlayerManagement
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.I))
             {
                 if (!SmallGameEvents[_mTombEventAvailable])
                 {
-                    LaunchEvent(_mTombEventAvailable);
+                    StartDialogue();
                 }
             }
         }
 
-        private void LaunchEvent(FindEventId launchedEvent)
+        private void StartDialogue()
+        {
+            UIManager.Instance.DialogueManager.ToggleUI(true);
+            var getDialogue = InMemTombDialogues.UnlockedTomb[(int)_mTombEventAvailable];
+            UIManager.Instance.DialogueManager.StartNewDialogue(getDialogue);
+            UIManager.Instance.DialogueManager.OnDialogueCompleted += LaunchEvent;
+        }
+
+        private void LaunchEvent()
         {
             SmallGameEvents[_mTombEventAvailable] = true;
             _mPlayerData.AddCurrency(5);
-            TombEventToggle(false, 0);
+            PlayerSwitchTombState(false, 0);
+            UIManager.Instance.DialogueManager.OnDialogueCompleted -= LaunchEvent;
         }
     }
 
@@ -92,6 +102,6 @@ namespace PlayerManagement
         public IPlayerData PlayerData { get; }
         public void AddItem(IItemData newItem);
 
-        public void TombEventToggle(bool isEventActive, FindEventId tombEventId);
+        public void PlayerSwitchTombState(bool isEventActive, FindEventId tombEventId);
     }
 }

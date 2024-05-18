@@ -1,3 +1,4 @@
+using System.Collections;
 using DialogueManager;
 using PlayerManagement;
 using UnityEngine;
@@ -5,6 +6,12 @@ using UnityEngine;
 public class TombEvent : MonoBehaviour
 {
     [SerializeField] private FindEventId TombId;
+    [SerializeField] private GameObject FbButton;
+
+    private void Start()
+    {
+        FbButton.SetActive(false);
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,17 +19,23 @@ public class TombEvent : MonoBehaviour
         {
             return;
         }
-        PlayerCoreManager.Instance.TombEventToggle(true, TombId);
+        StartCoroutine(WaitForFeedback());
+        PlayerCoreManager.Instance.PlayerSwitchTombState(true, TombId);
     }
-    
+
+    private IEnumerator WaitForFeedback()
+    {
+        yield return new WaitForSeconds(1);
+        FbButton.SetActive(true);
+    }
     public void OnTriggerExit2D(Collider2D other)
     {
         if (!IsPlayer(other))
         {
             return;
         }
-        PlayerCoreManager.Instance.TombEventToggle(false, 0);
-
+        PlayerCoreManager.Instance.PlayerSwitchTombState(false, 0);
+        FbButton.SetActive(false);
     }
 
     private bool IsPlayer(Collider2D col)

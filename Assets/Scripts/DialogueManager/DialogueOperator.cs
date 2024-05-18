@@ -173,7 +173,7 @@ namespace DialogueManager
 
     public enum FindEventId
     {
-        Tomb1 = 1,
+        Tomb1 = 0,
         Tomb2,
         Tomb3,
         Tomb4,

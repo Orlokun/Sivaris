@@ -11,21 +11,13 @@ namespace GeneralManagement
         [SerializeField] private GameObject PauseMenu;
 
         [SerializeField] private Button QuitGameButton;
-        [SerializeField] private Button GoToMenuButton;
         [SerializeField] private Button ContinueButton;
 
         private void Awake()
         {
             QuitGameButton.onClick.AddListener(CloseGame);
-            GoToMenuButton.onClick.AddListener(ReturnToMainMenu);
             QuitGameButton.onClick.AddListener(TogglePauseSystem);
             PauseMenu.SetActive(false);
-        }
-
-        private void ReturnToMainMenu()
-        {
-            TogglePauseSystem();
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 
         private void CloseGame()

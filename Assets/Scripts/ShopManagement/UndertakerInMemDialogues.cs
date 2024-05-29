@@ -9,7 +9,7 @@ namespace ShopManagement
         //Welcome Dialogue 1
         private const string Welcome_1_Node0 = "It's a long time someone came...";
         private const string Welcome_1_Node1 = "This may look abandoned. But Gold is still needed around this parts. Plenty of gold...";
-        private const string Welcome_1_Node2 = "*sighs with capitalism";
+        private const string Welcome_1_Node2 = "Which blade shall renew its fame under your arm?";
         
         //Welcome Dialogue 2
         private const string Welcome_2_Node0 = "You look worthy. And I hear gold in your pockets.";
@@ -19,8 +19,8 @@ namespace ShopManagement
 
         #region Rejection Dialogues
         //Rejection Dialogue 1        
-        private const string Rejection_1_Node0 = "You think you are the first broke hero around this parts?";
-        private const string Rejection_1_Node1 = "Gold is what you need to get the ancient swords. Maybe near these tombs you may find some.";
+        private const string Rejection_1_Node0 = "You think you are the first broke looter around these areas?";
+        private const string Rejection_1_Node1 = "Gold is what you need to get the ancient swords. These tombs may still have some in them, if you are up to the task.";
         private const string Rejection_1_Node2 = "If you want a fine piece of blade, bring me at least 20 coins.";
         
         //Rejection Dialogue 1        
@@ -33,21 +33,21 @@ namespace ShopManagement
         #region NotEnoughMoneyDialogues
         //Not enough 1
         private const string NotEnoughDough_1_Node0 = "You don't have enough gold to purchase this item.";
-        private const string NotEnoughDough_1_Node1 = "Maybe try somethin cheaper. Though what's cheap costs heavily. *bug in production happens.";
+        private const string NotEnoughDough_1_Node1 = "Maybe try somethin cheaper. Though what's cheap costs heavily.";
         
         //Not Enough 2
-        private const string NotEnoughDough_2_Node0 = "This lands are more expensive than what you have.";
+        private const string NotEnoughDough_2_Node0 = "These lands are more expensive than what you have.";
         private const string NotEnoughDough_2_Node1 = "*Drops rent cost as if by accident ($950 + taxes).";
         #endregion
         
         #region Already Have that
         //Already 1
-        private const string AlreadyHave_1_Node0 = "You already have that one. Why on earth would I be able to sell it to you again.";
+        private const string AlreadyHave_1_Node0 = "You already have that one. How could I sell it again.";
         private const string AlreadyHave_1_Node1 = "Well, if it suits you. Who am I to judge?";
         
         //Already 2
-        private const string AlreadyHave_2_Node0 = "Already have that blade... Hey... I have an idea.";
-        private const string AlreadyHave_2_Node1 = "Since you really like that blade, maybe you can hire the dev of this game and ask him for more!";
+        private const string AlreadyHave_2_Node0 = "Already have that blade...";
+        private const string AlreadyHave_2_Node1 = "Don't bother me with repetitive requests.";
         #endregion
         
         #region Not a sword selected
